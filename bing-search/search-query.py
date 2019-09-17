@@ -10,6 +10,13 @@ secrets_file = Path("./bing-search/secrets.json")
 if secrets_file.exists() is True:
     with open(secrets_file, "rt") as json_data: 
         secrets = json.load(json_data)
+else: 
+    secrets = {
+    "config_id": "xxxxxx",
+    "subscription_key1": "xxxxxx",
+    "subscription_key2": "xxxxx", 
+    "endpoint": "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0"
+    }
 
 #%%
 def getRequest(secrets, query): 
