@@ -13,7 +13,7 @@ if secrets_file.exists() is True:
 
 #%%
 def getRequest(secrets, query): 
-    request = f"{secrets['endpoint']}/search?q={query}&customconfig={secrets['config_id']}&mkt=en-US"
+    request = f"{secrets['endpoint']}/search?q={query}&customconfig={secrets['config_id']}&count=50&mkt=en-US"
     print(request)
     header = {'Ocp-Apim-Subscription-Key':secrets['subscription_key1']}
     r = requests.get(request,headers=header)
@@ -32,4 +32,9 @@ webPages = resp['webPages']['value']
 for w in webPages: 
     print(f"id: {'id' in w.keys()}, "
     f"searchTags :{'searchTags' in w.keys()}")
+#%%
+for w in webPages:
+    print(f"url: {w['displayUrl']}")
+
+
 #%%
